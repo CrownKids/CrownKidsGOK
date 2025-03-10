@@ -1,0 +1,6 @@
+PORT=3000
+TWILIO_SID=your_twilio_sid
+TWILIO_AUTH_TOKEN=your_twilio_auth_token
+TWILIO_WHATSAPP_NUMBER=whatsapp:+your_twilio_number
+GOOGLE_SERVICE_ACCOUNT=your_google_service_account_json
+GOOGLE_SHEET_ID=your_google_sheet_id
