@@ -36,8 +36,13 @@ app.post('/webhook', async (req, res) => {
 
 // Keep-alive para evitar que Railway cierre el servidor
 setInterval(() => {
-    console.log("🔄 Manteniendo el servidor activo...");
-}, 5 * 60 * 1000); // Se ejecuta cada 5 minutos
+    console.log("🔄 Servidor sigue corriendo en Railway...");
+}, 60 * 1000); // Ejecuta un mensaje cada 1 minuto
+
+// Ruta de prueba para verificar si el servidor está activo
+app.get('/', (req, res) => {
+    res.send('✅ Servidor activo');
+});
 
 app.listen(port, "0.0.0.0", () => {
     console.log(`🚀 Servidor ejecutándose en el puerto ${port}`);
