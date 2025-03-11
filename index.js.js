@@ -17,6 +17,10 @@ app.post('/webhook', async (req, res) => {
 
     if (incomingMsg.includes('hola')) {
         reply = '¡Hola! ¿En qué puedo ayudarte hoy?\n1. Impresiones\n2. Libros escolares\n3. Preguntas frecuentes';
+    } else if (incomingMsg === '1') {
+        reply = 'Has seleccionado Impresiones. ¿Qué información necesitas?\n1. Precios\n2. Usos\n3. Encargar';
+    } else if (incomingMsg === '2') {
+        reply = 'Has seleccionado Libros escolares. ¿Cuántos libros necesitas? (Mínimo 5 unidades)\n1. 5-10\n2. 11-20\n3. 21-50\n4. Más de 50';
     } else {
         reply = 'No entendí tu mensaje. Por favor, elige una opción del menú.';
     }
@@ -30,6 +34,11 @@ app.post('/webhook', async (req, res) => {
     res.sendStatus(200);
 });
 
-app.listen(port, () => {
-    console.log(`Servidor corriendo en el puerto ${port}`);
+// Keep-alive para evitar que Railway cierre el servidor
+setInterval(() => {
+    console.log("Servidor activo...");
+}, 5 * 60 * 1000); // Cada 5 minutos
+
+app.listen(port, "0.0.0.0", () => {
+    console.log(`🚀 Servidor ejecutándose en el puerto ${port}`);
 });
